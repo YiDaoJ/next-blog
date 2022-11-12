@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "css:watch": "tailwindcss -i src/css/tailwind.css -o dist/css/tailwind.css --watch"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
+    "clsx": "^1.2.1",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
