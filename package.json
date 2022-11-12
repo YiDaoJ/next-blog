@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "css:watch": "tailwindcss -i src/css/tailwind.css -o dist/css/tailwind.css --watch"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.3",

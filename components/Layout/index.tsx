@@ -7,7 +7,7 @@ export const Layout: FC = ({ children }) => {
     <div
       className={clsx(
         "layout",
-        "flex flex-col justify-start py-4 px-16",
+        "flex flex-col justify-start",
         "h-full w-full py-4 px-16",
         "bg-silver dark:bg-dark"
       )}
@@ -22,6 +22,15 @@ export const Layout: FC = ({ children }) => {
       >
         {children}
       </main>
+      <footer
+        className={clsx([
+          "footer",
+          "py-8 px-0",
+          "flex justify-center items-center",
+        ])}
+      >
+        Present by YiDaoJ
+      </footer>
     </div>
   );
 };
