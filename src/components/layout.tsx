@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { FC } from "react";
-import { Navigation } from "../Navigation";
+import { Navigation } from "./nav";
 
 export const Layout: FC = ({ children }) => {
   return (
@@ -8,7 +8,7 @@ export const Layout: FC = ({ children }) => {
       className={clsx(
         "layout",
         "flex flex-col justify-start",
-        "h-full w-full py-4 px-16",
+        "h-screen w-full py-4 px-16",
         "bg-silver dark:bg-dark"
       )}
     >
