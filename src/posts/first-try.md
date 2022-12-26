@@ -1,0 +1,15 @@
+---
+title: "First Try"
+date: "2022-12-26"
+---
+
+This is the first test post of my blog.
+
+The post of my blog will be written in [markdown](https://de.wikipedia.org/wiki/Markdown).
+At the very beginning I planned to create and save my post via CMS, which is more complex than load MD file from the app itself and render it.
+
+I tought it would be helpful to me to try this way, in which I can understand the data-fetching, pre-rendering well and faster. Btw I can deploy this blog website to vercel, it is also very convinient.
+
+I've no idea what I should write in my blog, perhaps my weekly journal of leaning English.
+
+Anyway, I'm lookting forward to it.
