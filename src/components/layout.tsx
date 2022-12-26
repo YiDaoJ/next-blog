@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Navigation } from "./nav";
 
-export const Layout: FC = ({ children }) => {
+export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div
       className={clsx(
