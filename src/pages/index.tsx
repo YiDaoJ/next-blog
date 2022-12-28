@@ -2,6 +2,7 @@ import { getSortedPosts } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 import styles from "../styles/Home.module.css";
 
@@ -21,10 +22,11 @@ const Home: NextPage<Props> = ({ allPostsData }: Props) => {
       </Head>
       <ul>
         {allPostsData.map((post: IBlogPost) => (
-          <div key={post.slug}>
-            <div>{post.title}</div>
+          <li key={post.slug} className="mb-4">
+            <Link href={`/posts/${post.slug}`}>{post.title}</Link>
             <div>{post.date}</div>
-          </div>
+            <div>{post.slug}</div>
+          </li>
         ))}
       </ul>
     </div>
