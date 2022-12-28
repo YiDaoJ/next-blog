@@ -2,6 +2,8 @@ import { IBlogPost } from "@/types/type";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import { remark } from "remark";
+import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "/src/posts");
 
@@ -27,7 +29,7 @@ export function getPostsSlugs() {
   });
 }
 
-function getPostByFileName(fileName: string): IBlogPost {
+export async function getPostByFileName(fileName: string): Promise<IBlogPost> {
   // Remove ".md" from file name to get slug
   const slug = fileName.replace(/\.md$/, "");
   // Read markdown file as string
@@ -37,36 +39,41 @@ function getPostByFileName(fileName: string): IBlogPost {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContent);
 
+  // Use remark to convert markdown into HTML string
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content);
+  const contentHtml = processedContent.toString();
+
   return {
     slug,
     ...matterResult.data,
     content: matterResult.content,
+    contentHtml,
   } as IBlogPost;
 }
 
-export function getPostBySlug(slug: string): IBlogPost {
+type PostInfoType = Omit<IBlogPost, "content" | "contentHTML">;
+
+export function getPostInfoByFileName(fileName: string): PostInfoType {
   // Read markdown file as string
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fullPath = path.join(postsDirectory, fileName);
   const fileContent = fs.readFileSync(fullPath, "utf8");
 
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContent);
-
-  // console.log({ slug, title: matterResult.data.title });
-
   return {
-    slug,
+    slug: fileName.replace(/\.md$/, ""),
     ...matterResult.data,
-    content: matterResult.content,
-  } as IBlogPost;
+  } as PostInfoType;
 }
 
-export function getSortedPosts(): IBlogPost[] {
-  const postSlugs = getPostsPaths();
+export function getSortedPosts(): PostInfoType[] {
+  const postPaths = getPostsPaths();
 
-  const posts = postSlugs
-    .map((slug: string) => {
-      return getPostByFileName(slug);
+  const posts = postPaths
+    .map((path: string) => {
+      return getPostInfoByFileName(path);
     })
     .sort((postA, postB) => {
       return new Date(postA.date) < new Date(postB.date) ? 1 : -1;

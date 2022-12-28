@@ -12,7 +12,7 @@ export const Post: FC<{ post: IBlogPost }> = ({ post }) => {
   );
 };
 
-const PostOverview: FC<IBlogPost> = ({
+const PostOverview: FC<Omit<IBlogPost, "contentHtml">> = ({
   title,
   slug,
   content,

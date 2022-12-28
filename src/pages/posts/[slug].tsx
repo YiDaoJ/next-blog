@@ -1,4 +1,4 @@
-import { getPostBySlug, getPostsSlugs } from "@/lib/getPosts";
+import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
@@ -13,6 +13,7 @@ export const Post: NextPage<{ postData: IBlogPost; error?: string }> = ({
     <>
       <div>{postData?.title}</div>
       <div>{postData?.date}</div>
+      <div dangerouslySetInnerHTML={{ __html: postData?.contentHtml }} />
     </>
   );
 };
@@ -30,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // fetch necessary data for the post with id / slug
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const postData = getPostBySlug(params.slug);
+    const postData = await getPostByFileName(`${params.slug}.md`);
     return {
       props: {
         postData,

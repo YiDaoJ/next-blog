@@ -3,4 +3,5 @@ export interface IBlogPost {
   date: string;
   slug: string;
   content: string;
+  contentHtml?: string;
 }
