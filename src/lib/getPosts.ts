@@ -2,8 +2,6 @@ import { IBlogPost } from "@/types/type";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import { remark } from "remark";
-import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "/src/posts");
 
@@ -19,7 +17,7 @@ type postSlugType = {
 export function getPostsSlugs() {
   const allPostsSlugs = getPostsPaths().map((post: string) => {
     // Remove ".md" from file name to get id
-    return post.replace(/\.md$/, "");
+    return post.replace(/\.mdx$/, "");
   });
 
   return allPostsSlugs.map((slug: string) => {
@@ -31,7 +29,7 @@ export function getPostsSlugs() {
 
 export async function getPostByFileName(fileName: string): Promise<IBlogPost> {
   // Remove ".md" from file name to get slug
-  const slug = fileName.replace(/\.md$/, "");
+  const slug = fileName.replace(/\.mdx$/, "");
   // Read markdown file as string
   const fullPath = path.join(postsDirectory, `${fileName}`);
   const fileContent = fs.readFileSync(fullPath, "utf8");
@@ -39,21 +37,14 @@ export async function getPostByFileName(fileName: string): Promise<IBlogPost> {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContent);
 
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
-
   return {
     slug,
     ...matterResult.data,
     content: matterResult.content,
-    contentHtml,
   } as IBlogPost;
 }
 
-type PostInfoType = Omit<IBlogPost, "content" | "contentHTML">;
+type PostInfoType = Omit<IBlogPost, "content">;
 
 export function getPostInfoByFileName(fileName: string): PostInfoType {
   // Read markdown file as string
@@ -63,7 +54,7 @@ export function getPostInfoByFileName(fileName: string): PostInfoType {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContent);
   return {
-    slug: fileName.replace(/\.md$/, ""),
+    slug: fileName.replace(/\.mdx$/, ""),
     ...matterResult.data,
   } as PostInfoType;
 }

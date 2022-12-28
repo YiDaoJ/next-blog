@@ -16,7 +16,7 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
   );
 };
 
-const PostOverview: FC<Omit<IBlogPost, "contentHtml">> = forwardRef(
+const PostOverview: FC<IBlogPost> = forwardRef(
   ({ title, slug, content, date, language }, ref) => {
     return (
       <Link href={`/posts/${encodeURIComponent(slug)}`}>

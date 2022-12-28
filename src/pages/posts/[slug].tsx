@@ -1,28 +1,23 @@
 import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 
-export const Post: NextPage<{ postData: IBlogPost; error?: string }> = ({
-  postData,
-  error,
-}) => {
-  if (error) {
-    return <div>{error}</div>;
-  }
+export const Post: NextPage<{
+  postData: IBlogPost;
+  mdxSource: MDXRemoteSerializeResult;
+}> = ({ postData, mdxSource }) => {
   return (
-    <>
+    <article>
       <Head>
         <title>{postData?.title}</title>
       </Head>
       <div>{postData?.title}</div>
       <div>{postData?.date}</div>
-      {/* <div>{postData?.contentHtml}</div> */}
-      <div dangerouslySetInnerHTML={{ __html: postData?.contentHtml }} />
-      {/* <ReactMarkdown remarkPlugins={[remarkGfm]}>
-        {postData?.content}
-      </ReactMarkdown> */}
-    </>
+      <MDXRemote {...mdxSource} />
+    </article>
   );
 };
 
@@ -38,20 +33,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // fetch necessary data for the post with id / slug
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  try {
-    const postData = await getPostByFileName(`${params.slug}.md`);
-    return {
-      props: {
-        postData,
-      },
-    };
-  } catch (e: any) {
-    return {
-      props: {
-        error: e.message,
-      },
-    };
-  }
+  const postData = await getPostByFileName(`${params?.slug}.mdx`);
+  const source = postData.content;
+  const mdxSource = await serialize(source, {
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [],
+      development: false,
+    },
+  });
+
+  return { props: { postData, mdxSource } };
 };
 
 export default Post;

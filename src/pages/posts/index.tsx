@@ -1,5 +1,6 @@
 import { PostItem } from "@/components/post";
 import { getSortedPosts } from "@/lib/getPosts";
+import { IBlogPost } from "@/types/type";
 import { GetStaticProps, NextPage } from "next";
 
 const Posts: NextPage<{ allPostsData: IBlogPost[] }> = ({ allPostsData }) => {
