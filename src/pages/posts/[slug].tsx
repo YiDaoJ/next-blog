@@ -13,7 +13,11 @@ export const Post: NextPage<{ postData: IBlogPost; error?: string }> = ({
     <>
       <div>{postData?.title}</div>
       <div>{postData?.date}</div>
+      {/* <div>{postData?.contentHtml}</div> */}
       <div dangerouslySetInnerHTML={{ __html: postData?.contentHtml }} />
+      {/* <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {postData?.content}
+      </ReactMarkdown> */}
     </>
   );
 };

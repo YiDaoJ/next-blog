@@ -1,6 +1,7 @@
 ---
 title: "First Try"
 date: "2022-12-26"
+language: "en"
 ---
 
 This is the first test post of my blog.

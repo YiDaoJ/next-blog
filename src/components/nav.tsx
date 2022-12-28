@@ -1,12 +1,12 @@
-import { FC, ReactNode } from "react";
-import Link from "next/link";
 import clsx from "clsx";
+import Link from "next/link";
+import { FC, ReactNode } from "react";
 
 const Routes: { path: string; title: string }[] = [
   { path: "/", title: "Home" },
-  // { path: "/archives", title: "Archives" },
-  // { path: "/categories", title: "Categories" },
-  { path: "/tags", title: "Tags" },
+  { path: "/posts", title: "Blog" },
+  // { path: "/en-posts", title: "English posts" },
+  // { path: "/zh-posts", title: "中文文章" },
 ];
 
 export const Navigation: FC = () => {
