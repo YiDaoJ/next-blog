@@ -1,6 +1,7 @@
 import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 
 export const Post: NextPage<{ postData: IBlogPost; error?: string }> = ({
   postData,
@@ -11,6 +12,9 @@ export const Post: NextPage<{ postData: IBlogPost; error?: string }> = ({
   }
   return (
     <>
+      <Head>
+        <title>{postData?.title}</title>
+      </Head>
       <div>{postData?.title}</div>
       <div>{postData?.date}</div>
       {/* <div>{postData?.contentHtml}</div> */}
