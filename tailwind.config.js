@@ -7,12 +7,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "main-dark": "#171717",
-        "main-light": "#f1f5f9",
+        "main-dark": "#292524",
+        "main-light": "#f5f5f4",
         "high-light": "#fbbf24",
-
+        "black": "#000",
+        "white": "#fff",
+        "tag": "#9f86c0",
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp')
+  ],
 }
