@@ -1,3 +1,4 @@
+import CustomLink from "@/components/customLink";
 import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
@@ -5,18 +6,26 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 
+type PostFrontMatter = Omit<IBlogPost, "content" | "slug">;
+
+const components = {
+  a: CustomLink,
+};
+
 export const Post: NextPage<{
-  postData: IBlogPost;
+  frontMatter: PostFrontMatter;
   mdxSource: MDXRemoteSerializeResult;
-}> = ({ postData, mdxSource }) => {
+}> = ({ frontMatter, mdxSource }) => {
   return (
-    <article>
+    <article className="prose prose-stone dark:prose-invert md:prose-lg lg:prose-xl tracking-wide w-full font-light">
       <Head>
-        <title>{postData?.title}</title>
+        <title>{frontMatter?.title}</title>
       </Head>
-      <div>{postData?.title}</div>
-      <div>{postData?.date}</div>
-      <MDXRemote {...mdxSource} />
+      <h1>{frontMatter?.title}</h1>
+      <div className="opacity-60">{frontMatter?.date}</div>
+      <div className="my-12">
+        <MDXRemote {...mdxSource} components={components} />
+      </div>
     </article>
   );
 };
@@ -34,7 +43,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // fetch necessary data for the post with id / slug
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostByFileName(`${params?.slug}.mdx`);
-  const source = postData.content;
+  const { content: source, date, title, language } = postData;
   const mdxSource = await serialize(source, {
     mdxOptions: {
       remarkPlugins: [],
@@ -43,7 +52,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   });
 
-  return { props: { postData, mdxSource } };
+  return {
+    props: {
+      frontMatter: { date, title, language } as PostFrontMatter,
+      mdxSource,
+    },
+  };
 };
 
 export default Post;
