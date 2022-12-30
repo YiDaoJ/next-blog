@@ -1,10 +1,12 @@
 import CustomLink from "@/components/customLink";
 import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
+import hljs from "highlight.js";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
+import { useEffect } from "react";
 
 type PostFrontMatter = Omit<IBlogPost, "content" | "slug">;
 
@@ -16,6 +18,10 @@ export const Post: NextPage<{
   frontMatter: PostFrontMatter;
   mdxSource: MDXRemoteSerializeResult;
 }> = ({ frontMatter, mdxSource }) => {
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
+
   return (
     <article className="prose prose-stone dark:prose-invert md:prose-lg lg:prose-xl tracking-wide w-full font-light">
       <Head>
