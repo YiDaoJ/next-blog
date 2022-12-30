@@ -6,7 +6,7 @@ import { GetStaticProps, NextPage } from "next";
 const Posts: NextPage<{ allPostsData: IBlogPost[] }> = ({ allPostsData }) => {
   return (
     <>
-      <ul className="flex flex-col gap-10 w-full">
+      <ul className="flex flex-col gap-10">
         {allPostsData.map((post: IBlogPost) => (
           <PostItem post={post} key={post.slug} />
         ))}

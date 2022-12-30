@@ -7,7 +7,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     <div
       className={clsx(
         "layout",
-        "flex flex-col justify-start",
+        "flex flex-col justify-start items-center",
         "h-screen w-full py-4 px-16",
         "bg-silver dark:bg-dark"
       )}
@@ -15,9 +15,8 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       <Navigation />
       <main
         className={clsx(
-          "main",
-          "flex flex-initial flex-col items-center justify-start",
-          "h-full p-32"
+          "container mx-auto",
+          "flex flex-initial flex-col items-center justify-start"
         )}
       >
         {children}
@@ -25,7 +24,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       <footer
         className={clsx([
           "py-8 px-0 opacity-60",
-          "flex justify-center items-center flex-1",
+          "flex justify-center items-center",
         ])}
       >
         Present by YiDaoJ
