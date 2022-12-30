@@ -16,7 +16,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       <main
         className={clsx(
           "container mx-auto",
-          "flex flex-initial flex-col items-center justify-start"
+          "flex flex-col items-center justify-start flex-1"
         )}
       >
         {children}

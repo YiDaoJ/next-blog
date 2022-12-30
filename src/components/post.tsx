@@ -14,7 +14,9 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
         className={clsx(
           "cursor-pointer relative",
           "prose prose-stone dark:prose-invert",
-          "rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 hover:shadow-xl transition shadow-sm"
+          "md:prose-md lg:prose-lg tracking-wide w-full font-light",
+          "rounded-xl bg-gradient-to-r dark:from-yellow-600 dark:to-red-600 p-0.5 hover:shadow-md transition shadow-sm",
+          "from-sky-300 to-cyan-700"
         )}
       >
         <div className="rounded-[10px] dark:bg-main-dark bg-main-light p-4 !pt-5 sm:p-6">
@@ -24,7 +26,7 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
             {isChinese && (
               <span
                 className={clsx(
-                  "py-0.5 px-1.5 bg-high-light dark:bg-tag text-sm rounded-md text-black dark:text-white"
+                  "py-0.5 px-1.5 bg-sky-200 dark:bg-high-light  text-sm rounded-md text-black dark:text-white"
                 )}
               >
                 中文

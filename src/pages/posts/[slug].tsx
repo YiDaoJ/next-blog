@@ -23,7 +23,7 @@ export const Post: NextPage<{
   }, []);
 
   return (
-    <article className="prose prose-stone dark:prose-invert md:prose-lg lg:prose-xl tracking-wide w-full font-light">
+    <article className="prose prose-stone dark:prose-invert md:prose-md lg:prose-lg tracking-wide w-full font-light">
       <Head>
         <title>{frontMatter?.title}</title>
       </Head>

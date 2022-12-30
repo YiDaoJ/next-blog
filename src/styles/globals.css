@@ -29,3 +29,13 @@ body::-webkit-scrollbar {
     background: theme(colors.main-dark);
   }
 }
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+  body {
+    color: theme(colors.main-dark);
+    background: theme(colors.main-light);
+  }
+}

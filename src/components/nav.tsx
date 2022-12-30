@@ -36,7 +36,7 @@ const NavItem: FC<NavItemProps> = ({ path, title }) => (
     <a
       className={clsx(
         "no-underline transition-colors",
-        "hover:text-high-light",
+        "hover:text-sky-600 dark:hover:text-high-light",
         "text-main-dark dark:text-main-light"
       )}
     >

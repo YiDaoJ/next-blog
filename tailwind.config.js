@@ -11,8 +11,7 @@ module.exports = {
         "main-light": "#f5f5f4",
         "high-light": "#fbbf24",
         "black": "#000",
-        "white": "#fff",
-        "tag": "#9f86c0",
+        "white": "#fff"
       }
     },
   },
