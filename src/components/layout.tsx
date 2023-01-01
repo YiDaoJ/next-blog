@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { FC, PropsWithChildren } from "react";
+import CustomLink from "./customLink";
 import { Navigation } from "./nav";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
@@ -27,7 +28,8 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
           "flex justify-center items-center",
         ])}
       >
-        Present by YiDaoJ
+        <span className="mr-1.5">Present by</span>
+        <CustomLink href="https://yidaoyidao.cc/">YiDaoJ</CustomLink>
       </footer>
     </div>
   );

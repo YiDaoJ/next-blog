@@ -12,8 +12,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* eslint-disable-next-line react/no-unescaped-entities */}
-      <div>Hi I'm Xiao, a front-end developer.</div>
+      <main className="prose prose-stone dark:prose-invert md:prose-lg lg:prose-xl flex flex-col justify-center h-full">
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
+        <div>Hi I'm Xiao, a front-end developer.</div>
+        <div>
+          Here is my blog, the implementation and styling are still WIP.{" "}
+        </div>
+        <div>
+          My blog could be written in English, Chinese or later also in German.
+        </div>
+      </main>
     </>
   );
 };

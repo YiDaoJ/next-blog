@@ -10,7 +10,8 @@ import { useEffect } from "react";
 
 type PostFrontMatter = Omit<IBlogPost, "content" | "slug">;
 
-const components = {
+// TODO: adapt type
+const components: any = {
   a: CustomLink,
 };
 
@@ -25,10 +26,10 @@ export const Post: NextPage<{
   return (
     <article className="prose prose-stone dark:prose-invert md:prose-md lg:prose-lg tracking-wide w-full font-light">
       <Head>
-        <title>{frontMatter?.title}</title>
+        <title>{frontMatter.title}</title>
       </Head>
-      <h1>{frontMatter?.title}</h1>
-      <div className="opacity-60">{frontMatter?.date}</div>
+      <h1>{frontMatter.title}</h1>
+      <div className="opacity-60">{frontMatter.date}</div>
       <div className="my-12">
         <MDXRemote {...mdxSource} components={components} />
       </div>
@@ -48,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // fetch necessary data for the post with id / slug
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostByFileName(`${params?.slug}.mdx`);
+  const postData = await getPostByFileName(`${params.slug}.mdx`);
   const { content: source, date, title, language } = postData;
   const mdxSource = await serialize(source, {
     mdxOptions: {
