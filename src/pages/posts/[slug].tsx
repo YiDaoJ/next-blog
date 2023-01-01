@@ -7,6 +7,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import { useEffect } from "react";
+import remarkGfm from "remark-gfm";
 
 type PostFrontMatter = Omit<IBlogPost, "content" | "slug">;
 
@@ -53,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { content: source, date, title, language } = postData;
   const mdxSource = await serialize(source, {
     mdxOptions: {
-      remarkPlugins: [],
+      remarkPlugins: [remarkGfm],
       rehypePlugins: [],
       development: false,
     },
