@@ -50,7 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // fetch necessary data for the post with id / slug
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostByFileName(`${params.slug}.mdx`);
+  const postData = await getPostByFileName(`${params?.slug}.mdx`);
   const { content: source, date, title, language } = postData;
   const mdxSource = await serialize(source, {
     mdxOptions: {
