@@ -8,8 +8,8 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
 
   const isChinese = language === "zh";
   // TODO:
-  const addPrefix = (prefix: string, arr: string[]) => {
-    const newArr = arr.forEach((elm) => `${prefix}:${elm}`);
+  const addPrefix = (prefix: string, arr: string[]): string => {
+    const newArr = arr.map((elm) => `${prefix}:${elm}`);
     return newArr.join(" ");
   };
 
