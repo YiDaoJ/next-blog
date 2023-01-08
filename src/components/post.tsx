@@ -7,6 +7,11 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
   const { slug, title, date, content, language } = post;
 
   const isChinese = language === "zh";
+  // TODO:
+  const addPrefix = (prefix: string, arr: string[]) => {
+    const newArr = arr.forEach((elm) => `${prefix}:${elm}`);
+    return newArr.join(" ");
+  };
 
   return (
     <Link href={`/posts/${encodeURIComponent(slug)}`}>
@@ -26,7 +31,7 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
             {isChinese && (
               <span
                 className={clsx(
-                  "py-0.5 px-1.5 bg-sky-200 dark:bg-high-light  text-sm rounded-md text-black dark:text-white"
+                  "py-0.5 px-1.5 bg-sky-200 dark:bg-high-light dark:text-white   text-sm rounded-md text-black dark:text-white"
                 )}
               >
                 中文

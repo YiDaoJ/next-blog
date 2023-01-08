@@ -1,3 +1,4 @@
+import CustomImage from "@/components/customImage";
 import CustomLink from "@/components/customLink";
 import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
@@ -8,12 +9,14 @@ import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import { useEffect } from "react";
 import remarkGfm from "remark-gfm";
+import remarkMdxImages from "remark-mdx-images";
 
 type PostFrontMatter = Omit<IBlogPost, "content" | "slug">;
 
 // TODO: adapt type
 const components: any = {
   a: CustomLink,
+  img: CustomImage,
 };
 
 export const Post: NextPage<{
@@ -54,7 +57,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { content: source, date, title, language } = postData;
   const mdxSource = await serialize(source, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm],
+      remarkPlugins: [remarkGfm, remarkMdxImages],
       rehypePlugins: [],
       development: false,
     },
