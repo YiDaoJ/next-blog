@@ -15,7 +15,7 @@ export const Navigation: FC = () => {
       className={clsx([
         "navigation",
         "flex justify-end items-center gap-8",
-        "py-8 px-0 text-lg",
+        "py-8 px-0 w-full text-lg",
       ])}
     >
       {Routes.map((route) => (
@@ -36,7 +36,7 @@ const NavItem: FC<NavItemProps> = ({ path, title }) => (
     <a
       className={clsx(
         "no-underline transition-colors",
-        "hover:text-high-light",
+        "hover:text-sky-600 dark:hover:text-high-light",
         "text-main-dark dark:text-main-light"
       )}
     >

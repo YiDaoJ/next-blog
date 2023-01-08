@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { FC, PropsWithChildren } from "react";
+import CustomLink from "./customLink";
 import { Navigation } from "./nav";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
@@ -7,7 +8,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     <div
       className={clsx(
         "layout",
-        "flex flex-col justify-start",
+        "flex flex-col justify-start items-center",
         "h-screen w-full py-4 px-16",
         "bg-silver dark:bg-dark"
       )}
@@ -15,21 +16,20 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       <Navigation />
       <main
         className={clsx(
-          "main",
-          "flex  flex-initial flex-col items-center justify-center ",
-          "h-full p-32"
+          "container mx-auto",
+          "flex flex-col items-center justify-start flex-1"
         )}
       >
         {children}
       </main>
       <footer
         className={clsx([
-          "footer",
-          "py-8 px-0",
+          "py-8 px-0 opacity-60",
           "flex justify-center items-center",
         ])}
       >
-        Present by YiDaoJ
+        <span className="mr-1.5">Present by</span>
+        <CustomLink href="https://yidaoyidao.cc/">YiDaoJ</CustomLink>
       </footer>
     </div>
   );
