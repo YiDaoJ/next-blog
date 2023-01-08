@@ -1,4 +1,3 @@
-import CustomImage from "@/components/customImage";
 import CustomLink from "@/components/customLink";
 import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
@@ -7,16 +6,33 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
+import Image from "next/image";
 import { useEffect } from "react";
+import imageSize from "rehype-img-size";
 import remarkGfm from "remark-gfm";
-import remarkMdxImages from "remark-mdx-images";
+import { Plugin } from "unified";
 
 type PostFrontMatter = Omit<IBlogPost, "content" | "slug">;
+interface ImageProps {
+  src: string;
+  alt: string;
+  width?: string | number | undefined;
+  height?: string | number | undefined;
+}
 
 // TODO: adapt type
 const components: any = {
   a: CustomLink,
-  img: CustomImage,
+  img: ({ width, height, alt, src }: ImageProps) => (
+    <Image
+      width={width}
+      height={height}
+      layout="responsive"
+      loading="lazy"
+      alt={alt}
+      src={src}
+    />
+  ),
 };
 
 export const Post: NextPage<{
@@ -57,8 +73,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { content: source, date, title, language } = postData;
   const mdxSource = await serialize(source, {
     mdxOptions: {
-      remarkPlugins: [remarkGfm, remarkMdxImages],
-      rehypePlugins: [],
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [[imageSize as Plugin, { dir: "public" }]],
       development: false,
     },
   });
