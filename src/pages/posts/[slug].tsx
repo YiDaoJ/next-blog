@@ -12,6 +12,13 @@ import imageSize from "rehype-img-size";
 import remarkGfm from "remark-gfm";
 import { Plugin } from "unified";
 
+/**
+ * render image in mdx
+ * https://ironeko.com/posts/how-to-use-next-js-image-with-markdown-or-mdx
+ * https://www.skovy.dev/blog/nextjs-image-with-mdx-bundler?seed=slxr9l
+ * https://kylepfromer.com/blog/nextjs-image-component-blog/
+ */
+
 type PostFrontMatter = Omit<IBlogPost, "content" | "slug">;
 interface ImageProps {
   src: string;

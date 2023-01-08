@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import PlaceHolder from "../../public/placeholder.jpeg";
 
 // next.js typescript example: https://github.com/vercel/next.js/tree/canary/examples/with-typescript
 
@@ -23,7 +21,6 @@ const Home: NextPage = () => {
         <div>
           My blog could be written in English, Chinese or later also in German.
         </div>
-        <Image src={PlaceHolder} alt="placeholder" />
       </main>
     </>
   );
