@@ -20,8 +20,8 @@ const CustomLink: FC<PropsWithChildren<CustomLinkProps>> = ({
         className={clsx(
           "text-black dark:text-white",
           "font-semibold no-underline",
-          linkHoverEffect,
-          "transition-all"
+          "border-dotted border-b-2 border-sky-600 dark:border-high-light",
+          linkHoverEffect
         )}
       >
         {children}
@@ -31,8 +31,9 @@ const CustomLink: FC<PropsWithChildren<CustomLinkProps>> = ({
 };
 
 const linkHoverEffect = clsx(
-  "hover:border-dotted hover:border-b-2 hover:border-sky-600 visited:no-underline",
-  "dark:hover:border-high-light"
+  "hover:border-solid hover:border-b-2 hover:border-sky-600 visited:no-underline",
+  "dark:hover:border-high-light",
+  "transition-all"
 );
 
 export default CustomLink;
