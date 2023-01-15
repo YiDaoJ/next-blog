@@ -1,7 +1,10 @@
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 
-export const Prose: FC<{ className?: string }> = ({ children, className }) => {
+export const Prose: FC<PropsWithChildren<{ className?: string }>> = ({
+  children,
+  className,
+}) => {
   return (
     <div
       className={clsx(

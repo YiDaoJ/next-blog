@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Document, {
+  DocumentContext,
   DocumentInitialProps,
   Head,
   Html,
