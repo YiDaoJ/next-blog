@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FC, ReactNode } from "react";
 
 const Routes: { path: string; title: string }[] = [
@@ -10,6 +11,7 @@ const Routes: { path: string; title: string }[] = [
 ];
 
 export const Navigation: FC = () => {
+  const router = useRouter();
   return (
     <div
       className={clsx([
@@ -19,7 +21,12 @@ export const Navigation: FC = () => {
       ])}
     >
       {Routes.map((route) => (
-        <NavItem key={route.title} path={route.path} title={route.title} />
+        <NavItem
+          key={route.title}
+          path={route.path}
+          title={route.title}
+          active={router.pathname === route.path}
+        />
       ))}
     </div>
   );
@@ -29,15 +36,16 @@ interface NavItemProps {
   path: string;
   title: string;
   icon?: ReactNode;
+  active: boolean;
 }
 
-const NavItem: FC<NavItemProps> = ({ path, title }) => (
+const NavItem: FC<NavItemProps> = ({ path, title, active }) => (
   <Link href={path}>
     <a
       className={clsx(
+        active && "text-sky-600 dark:text-high-light",
         "no-underline transition-colors",
-        "hover:text-sky-600 dark:hover:text-high-light",
-        "text-main-dark dark:text-main-light"
+        "hover:text-sky-600 dark:hover:text-high-light"
       )}
     >
       {title}

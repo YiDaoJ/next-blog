@@ -1,4 +1,5 @@
 import CustomLink from "@/components/customLink";
+import { Prose } from "@/components/prose";
 import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
 import hljs from "highlight.js";
@@ -51,16 +52,18 @@ export const Post: NextPage<{
   }, []);
 
   return (
-    <article className="prose prose-stone dark:prose-invert md:prose-md lg:prose-lg tracking-wide w-full font-light">
+    <>
       <Head>
         <title>{frontMatter.title}</title>
       </Head>
-      <h1>{frontMatter.title}</h1>
-      <div className="opacity-60">{frontMatter.date}</div>
-      <div className="my-12">
-        <MDXRemote {...mdxSource} components={components} />
-      </div>
-    </article>
+      <Prose>
+        <h1>{frontMatter.title}</h1>
+        <div className="opacity-60">{frontMatter.date}</div>
+        <div className="my-12">
+          <MDXRemote {...mdxSource} components={components} />
+        </div>
+      </Prose>
+    </>
   );
 };
 
