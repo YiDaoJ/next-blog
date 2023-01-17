@@ -10,7 +10,7 @@ module.exports = {
         "high-light": "#fbbf24",
         "black": "#000",
         "white": "#fff"
-      }
+      },
     },
   },
   plugins: [
