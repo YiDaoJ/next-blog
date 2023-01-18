@@ -8,7 +8,7 @@ export const Prose: FC<PropsWithChildren<{ className?: string }>> = ({
   return (
     <div
       className={clsx(
-        "prose prose-stone dark:prose-invert md:prose-md lg:prose-lg tracking-wide w-full font-light",
+        "prose prose-stone w-full font-light tracking-wide dark:prose-invert lg:prose-lg",
         className
       )}
     >

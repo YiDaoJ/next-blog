@@ -18,20 +18,20 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
     <Link href={`/posts/${encodeURIComponent(slug)}`}>
       <li
         className={clsx(
-          "cursor-pointer relative",
-          "rounded-xl bg-gradient-to-r dark:from-yellow-600 dark:to-red-600 p-0.5 hover:shadow-md transition shadow-sm",
+          "relative cursor-pointer",
+          "rounded-xl bg-gradient-to-r p-0.5 shadow-sm transition hover:shadow-md dark:from-yellow-600 dark:to-red-600",
           "from-sky-300 to-cyan-700"
         )}
       >
         <Prose>
-          <div className="rounded-[10px] dark:bg-gray-900 bg-gray-50 p-4 !pt-5 sm:p-6">
-            <h2>{title}</h2>
-            <div className={clsx("flex flex-row gap-4 items-center")}>
-              <time>{date}</time>
+          <div className="rounded-[10px] bg-gray-50 p-4 !pt-5 dark:bg-gray-900 sm:p-6">
+            <h3>{title}</h3>
+            <div className={clsx("flex flex-row items-center gap-4")}>
+              <time className="text-sm">{date}</time>
               {isChinese && (
                 <span
                   className={clsx(
-                    "py-0.5 px-1.5 bg-sky-200 dark:bg-high-light dark:text-white text-sm rounded-md text-black"
+                    "rounded-md bg-sky-200 py-0.5 px-1.5 text-sm text-black dark:bg-high-light dark:text-white"
                   )}
                 >
                   中文
