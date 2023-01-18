@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Prose className="flex flex-col justify-center h-full">
+      <Prose className="flex h-full flex-col items-center justify-center">
         {/* eslint-disable-next-line react/no-unescaped-entities */}
         <div>Hi I'm Xiao, a front-end developer.</div>
         <div>

@@ -14,10 +14,11 @@ export const Navigation: FC = () => {
   const router = useRouter();
   return (
     <div
+      // eslint-disable-next-line tailwindcss/no-custom-classname
       className={clsx([
         "navigation",
-        "flex justify-end items-center gap-8",
-        "py-8 px-0 w-full text-lg",
+        "flex items-center justify-end gap-8",
+        "w-full py-8 px-0 text-lg",
       ])}
     >
       {Routes.map((route) => (
