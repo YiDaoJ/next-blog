@@ -1,9 +1,17 @@
+### Styling
+
 - [ ] improve organizing tailwind classes
 
-  - [ ] reduce repeated classes for font
-  - [ ] create util function for classes of dark mode
+  - [x] reduce repeated classes for font
+  - [ ] create util function for classes of dark mode❓
 
 - [ ] modify landing page introduction
-- [ ] highlight visited navigation item
+- [x] highlight visited navigation item
+
+### Functions
+
+- [ ] add tags / category for post
+  - [ ] load tag from mdx and display in post list item
+  - [ ] add page for tags / category
 
 ...tbc
