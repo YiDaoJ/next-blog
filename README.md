@@ -11,7 +11,10 @@
 ### Functions
 
 - [ ] add tags / category for post
+
   - [ ] load tag from mdx and display in post list item
   - [ ] add page for tags / category
+
+- [ ] add back link in single post page
 
 ...tbc
