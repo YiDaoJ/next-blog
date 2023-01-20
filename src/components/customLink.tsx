@@ -20,7 +20,7 @@ const CustomLink: FC<PropsWithChildren<CustomLinkProps>> = ({
         className={clsx(
           "text-black dark:text-white",
           "font-semibold no-underline",
-          "border-b-2 border-dotted border-sky-600 dark:border-high-light",
+          "border-b-2 border-dotted border-sky-600 dark:border-highlight",
           linkHoverEffect
         )}
       >
@@ -32,7 +32,7 @@ const CustomLink: FC<PropsWithChildren<CustomLinkProps>> = ({
 
 const linkHoverEffect = clsx(
   "visited:no-underline hover:border-b-2 hover:border-solid hover:border-sky-600",
-  "dark:hover:border-high-light",
+  "dark:hover:border-highlight",
   "transition-all"
 );
 

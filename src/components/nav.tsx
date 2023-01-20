@@ -44,9 +44,9 @@ const NavItem: FC<NavItemProps> = ({ path, title, active }) => (
   <Link href={path}>
     <a
       className={clsx(
-        active && "text-sky-600 dark:text-high-light",
+        active && "text-sky-600 dark:text-highlight",
         "no-underline transition-colors",
-        "hover:text-sky-600 dark:hover:text-high-light"
+        "hover:text-sky-600 dark:hover:text-highlight"
       )}
     >
       {title}
