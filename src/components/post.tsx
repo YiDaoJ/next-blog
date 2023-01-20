@@ -8,19 +8,15 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
   const { slug, title, date, content, language } = post;
 
   const isChinese = language === "zh";
-  // TODO:
-  const addPrefix = (prefix: string, arr: string[]): string => {
-    const newArr = arr.map((elm) => `${prefix}:${elm}`);
-    return newArr.join(" ");
-  };
 
   return (
     <Link href={`/posts/${encodeURIComponent(slug)}`}>
       <li
         className={clsx(
           "relative cursor-pointer",
-          "rounded-xl bg-gradient-to-r p-0.5 shadow-sm transition hover:shadow-md dark:from-yellow-600 dark:to-red-600",
-          "from-sky-300 to-cyan-700"
+          "rounded-xl bg-gradient-to-r p-0.5",
+          "from-sky-300 to-cyan-700 shadow-sm dark:from-yellow-400 dark:to-amber-600 ",
+          "transition hover:shadow-md dark:hover:shadow-neutral-700"
         )}
       >
         <Prose>
@@ -31,7 +27,7 @@ export const PostItem: FC<{ post: IBlogPost }> = ({ post }) => {
               {isChinese && (
                 <span
                   className={clsx(
-                    "rounded-md bg-sky-200 py-0.5 px-1.5 text-sm text-black dark:bg-high-light dark:text-white"
+                    "rounded-md bg-sky-200 py-0.5 px-1.5 text-xs text-black dark:bg-amber-600 dark:text-white"
                   )}
                 >
                   中文
