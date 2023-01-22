@@ -1,1 +1,1 @@
-declare module "NProgress";
+declare module "nprogress";
