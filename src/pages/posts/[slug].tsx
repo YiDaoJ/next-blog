@@ -85,7 +85,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [[imageSize as Plugin, { dir: "public" }]],
-      development: false,
     },
   });
 
