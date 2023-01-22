@@ -16,5 +16,6 @@
   - [ ] add page for tags / category
 
 - [ ] add back link in single post page
+- [x] add top loading bar
 
 ...tbc
