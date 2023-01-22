@@ -20,13 +20,13 @@ body::-webkit-scrollbar {
   box-sizing: border-box;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-  body {
-    color: theme(colors.main-light);
-    background: theme(colors.main-dark);
+
+  #nprogress .bar {
+    background: #facc15;
   }
 }
 
@@ -34,8 +34,8 @@ body::-webkit-scrollbar {
   html {
     color-scheme: light;
   }
-  body {
-    color: theme(colors.main-dark);
-    background: theme(colors.main-light);
+
+  #nprogress .bar {
+    background: #0ea5e9;
   }
-} */
+}
