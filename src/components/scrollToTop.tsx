@@ -6,7 +6,7 @@ export const ScrollToTop: FC<{ onClick(): void }> = ({ onClick }) => {
     <button
       className={clsx(
         "fixed right-6 bottom-6 h-9 w-9 ",
-        "rounded-full bg-highlight opacity-60",
+        "rounded-full bg-sky-200 opacity-60 dark:bg-highlight",
         "hover:opacity-100"
       )}
       onClick={onClick}
