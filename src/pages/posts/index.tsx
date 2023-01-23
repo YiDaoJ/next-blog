@@ -14,7 +14,7 @@ const Posts: NextPage<{ allPostsData: IBlogPost[] }> = ({ allPostsData }) => {
       <ul
         className={clsx(
           "w-full max-w-screen-sm md:w-[35rem] lg:w-[38rem]",
-          "flex flex-col gap-10"
+          "flex flex-col gap-6 md:gap-10"
         )}
       >
         {allPostsData.map((post: IBlogPost) => (
