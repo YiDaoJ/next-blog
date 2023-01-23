@@ -18,7 +18,7 @@ export const Navigation: FC = () => {
       className={clsx([
         "navigation",
         "flex items-center justify-end gap-8",
-        "w-full py-8 px-0 text-lg",
+        "w-full py-8 text-base md:text-lg",
       ])}
     >
       {Routes.map((route) => (

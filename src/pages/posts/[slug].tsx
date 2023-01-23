@@ -1,5 +1,6 @@
 import CustomLink from "@/components/customLink";
 import { Prose } from "@/components/prose";
+import { ScrollToTop } from "@/components/scrollToTop";
 import { getPostByFileName, getPostsSlugs } from "@/lib/getPosts";
 import { IBlogPost } from "@/types/type";
 import hljs from "highlight.js";
@@ -8,7 +9,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import imageSize from "rehype-img-size";
 import remarkGfm from "remark-gfm";
 import { Plugin } from "unified";
@@ -47,9 +48,29 @@ export const Post: NextPage<{
   frontMatter: PostFrontMatter;
   mdxSource: MDXRemoteSerializeResult;
 }> = ({ frontMatter, mdxSource }) => {
+  const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
+
   useEffect(() => {
     hljs.highlightAll();
   }, []);
+
+  useEffect(() => {
+    const handleScrollButtonVisibility = () => {
+      window.scrollY > 400
+        ? setShowScrollButton(true)
+        : setShowScrollButton(false);
+    };
+
+    window.addEventListener("scroll", handleScrollButtonVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollButtonVisibility);
+    };
+  }, []);
+
+  const handleScrollToTop = () => {
+    window.scroll({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -63,6 +84,7 @@ export const Post: NextPage<{
           <MDXRemote {...mdxSource} components={components} />
         </div>
       </Prose>
+      {showScrollButton && <ScrollToTop onClick={handleScrollToTop} />}
     </>
   );
 };
