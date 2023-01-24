@@ -1,0 +1,19 @@
+---
+title: "Give it a try on monorepo with pnpm"
+date: "2023-01-24"
+language: "en"
+---
+
+About 3 months ago, the leader of our development group suggested that we could play around with the package manager [pnpm](https://pnpm.io/) and builder such as [turbo](https://turbo.build/) and [Vite](https://vitejs.dev/).
+
+Since I have never created a monorepo on my own, an idea came up in my head: How about setting up a monorepo with pnpm and using vite to build a sub-package of it.
+
+My plan is to create a monorepo with three sub-packages: Server, Client, Components.
+
+- Server: a mock server built with [stubr](https://github.com/stubrjs/stubr) that will handle the API request.
+- Client: working as a web application interface built with React.js, which is able to communicate with the server; initiated with Vite.
+- Components: contains only atom components that can be called in the client.
+
+Let's see what the difference is between a yarn workspace and a pnpm workspace!
+
+ps: Thanks for the correction form [DeepL Write](https://www.deepl.com/write). 😂
