@@ -18,4 +18,8 @@
 - [ ] add back link in single post page
 - [x] add top loading bar
 
+### Organization
+
+- [ ] lib and util folder are duplicated
+
 ...tbc
